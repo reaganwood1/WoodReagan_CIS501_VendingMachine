@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coin.cs" />
     <Compile Include="OutputDevices.cs" />
     <Compile Include="InputDevices.cs" />
     <Compile Include="VendingMachine.cs">

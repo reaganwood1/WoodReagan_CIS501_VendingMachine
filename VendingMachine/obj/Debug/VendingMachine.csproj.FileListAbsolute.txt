@@ -1,2 +1,10 @@
 C:\Users\reaganwood1\Downloads\VM_Project\VM_Project\VendingMachine\VendingMachine\bin\Debug\VendingMachine.exe.config
 C:\Users\reaganwood1\Source\Repos\WoodReagan_CIS501_VendingMachine\VendingMachine\bin\Debug\VendingMachine.exe.config
+C:\Users\reaganwood1\Source\Repos\WoodReagan_CIS501_VendingMachine\VendingMachine\bin\Debug\VendingMachine.exe
+C:\Users\reaganwood1\Source\Repos\WoodReagan_CIS501_VendingMachine\VendingMachine\bin\Debug\VendingMachine.pdb
+C:\Users\reaganwood1\Source\Repos\WoodReagan_CIS501_VendingMachine\VendingMachine\obj\Debug\VendingMachine.csprojResolveAssemblyReference.cache
+C:\Users\reaganwood1\Source\Repos\WoodReagan_CIS501_VendingMachine\VendingMachine\obj\Debug\VendingMachine.VendingMachine.resources
+C:\Users\reaganwood1\Source\Repos\WoodReagan_CIS501_VendingMachine\VendingMachine\obj\Debug\VendingMachine.Properties.Resources.resources
+C:\Users\reaganwood1\Source\Repos\WoodReagan_CIS501_VendingMachine\VendingMachine\obj\Debug\VendingMachine.csproj.GenerateResource.Cache
+C:\Users\reaganwood1\Source\Repos\WoodReagan_CIS501_VendingMachine\VendingMachine\obj\Debug\VendingMachine.exe
+C:\Users\reaganwood1\Source\Repos\WoodReagan_CIS501_VendingMachine\VendingMachine\obj\Debug\VendingMachine.pdb
