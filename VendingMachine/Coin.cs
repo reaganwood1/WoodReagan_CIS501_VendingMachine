@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
+
     class Coin
     {
         /// <summary>
@@ -28,6 +30,7 @@ namespace VendingMachine
         /// </summary>
         private int numCoinsToReturn;
 
+#if DEBUG
         /// <summary>
         /// Public getter for numCoins
         /// </summary>
@@ -38,28 +41,16 @@ namespace VendingMachine
         }
 
         /// <summary>
-        /// gets numCoinsToReturn and sets numCoinsToReturn. These coins will be taken from 
-        /// numCoins. If numCoins or NumCoinsToReturn is negative, exception will be thrown.
-        /// </summary>
-        public int NumCoinsToReturn {
-            get {
-                return numCoinsToReturn;
-            }
-            set {
-                numCoinsToReturn = numCoinsToReturn + value;
-                numCoins = numCoins - value;
-                if (numCoins < 0 || numCoinsToReturn < 0)
-                    throw new InvalidOperationException("coins went below zero, invalid operation");
-            }
-        }
-        /// <summary>
         /// Public getter for coinValue
         /// </summary>
-        public int CoinValue {
-            get {
+        public int CoinValue
+        {
+            get
+            {
                 return coinValue;
             }
         }
+#endif
 
         /// <summary>
         /// Constructor for Coin, sets coin value and the CoinDispenser reference
@@ -90,10 +81,32 @@ namespace VendingMachine
             dispenser.Actuate(numCoinsToReturn);
             //numCoins = numCoins - numCoinsToReturn;
             numCoinsToReturn = 0;
-
-
         }
 
+        /// <summary>
+        /// Gets the amount of coins that can be returned for the amount specified
+        /// </summary>
+        /// <param name="amountNeeded"></param>
+        /// <returns></returns>
+        public int GetMaxCoinsAvailabe(int amountNeeded) {
 
+            if (numCoins > 0 && coinValue > 0) // checks for divide by zero
+            {
+                int coinsAvailable = amountNeeded / (coinValue * numCoins); // integer division will produce highest number of coin that can be returned without going over
+                numCoins = numCoins - coinsAvailable; // remove the coins from numCoins
+                numCoinsToReturn = coinsAvailable; // add the coins to coinsToBeReturned
+                return numCoinsToReturn * coinValue; // return the value of the coins to be returned
+            }
+            else
+                throw new InvalidOperationException("Num Coins is less than zero or the coin value is negative");
+        }
+
+        /// <summary>
+        /// Returns coins to num coins because they were not returned
+        /// </summary>
+        public void ResetReturn() {
+            numCoins = numCoins + numCoinsToReturn;
+            numCoinsToReturn = 0;
+        }
     }
 }
