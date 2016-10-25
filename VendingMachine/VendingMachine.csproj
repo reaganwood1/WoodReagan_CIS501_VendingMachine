@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmountController.cs" />
+    <Compile Include="Can.cs" />
     <Compile Include="Coin.cs" />
     <Compile Include="OutputDevices.cs" />
     <Compile Include="InputDevices.cs" />
