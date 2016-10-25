@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
-    class Can
+    public class Can
     {
         /// <summary>
         /// dispenser dispenses cans to the user
@@ -69,16 +69,14 @@ namespace VendingMachine
         }
 
         /// <summary>
-        /// Dispenses a can and then manages the soldOutLight and purchaseLight
+        /// Dispenses a can and then manages the soldOutLight
         /// </summary>
-        public void DispenseCanAndManageLights() {
+        public void DispenseCanAndManageSoldOutLight() {
             if (numCans <= 0)
                 throw new InvalidOperationException("Tried to dispense can when a can didn't exist");
 
             dispenser.Actuate(); // dispense the can
             numCans--;
-
-            purchaseLight.TurnOff(); // turn off the light
 
             if (numCans == 0) // check if soldOutLight should be turned on
                 soldOutLight.TurnOn();

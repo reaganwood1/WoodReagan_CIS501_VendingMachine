@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace VendingMachine
 {
 
-    class Coin
+    public class Coin
     {
         /// <summary>
         /// Coin dispenser that coins will be dispensed through

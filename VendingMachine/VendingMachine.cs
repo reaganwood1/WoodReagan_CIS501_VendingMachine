@@ -84,8 +84,8 @@ namespace VendingMachine
             purchasableLight2 = new Light(pbxPurLight2, Color.Aqua);
             purchasableLight3 = new Light(pbxPurLight3, Color.Aqua);
 
-            coinDispenser10Yen = new CoinDispenser(txtChange10Yen);
-            coinDispenser50Yen = new CoinDispenser(txtChange50Yen);
+            coinDispenser10Yen = new CoinDispenser();
+            coinDispenser50Yen = new CoinDispenser();
             coinDispenser100Yen = new CoinDispenser(txtChange100Yen);
             coinDispenser500Yen = new CoinDispenser(txtChange500Yen);
 
@@ -114,8 +114,11 @@ namespace VendingMachine
 
             coinReturnButton = new CoinReturnButton();
 
-            // Instantiate your entity and control objects
-            // Connect these objects
+            // Instantiate entity classes
+            Coin coin10Yen = new Coin(10,)
+
+            // Instantiate control class
+            AmountController amountControl = new AmountController()
 
             // Display debug information
             displayCanPricesAndNames();
