@@ -82,9 +82,14 @@ namespace VendingMachine
 
             if (numCoins > 0 && coinValue > 0) // checks for divide by zero
             {
-                int coinsAvailable = amountNeeded / (coinValue * numCoins); // integer division will produce highest number of coin that can be returned without going over
-                numCoins = numCoins - coinsAvailable; // remove the coins from numCoins
-                numCoinsToReturn = coinsAvailable; // add the coins to coinsToBeReturned
+                int coinsNeeded = amountNeeded / (coinValue); // integer division will produce highest number of coin that can be returned without going over
+                if (coinsNeeded > numCoins) { // set all of the coins for return
+                    numCoinsToReturn = numCoins;
+                    numCoins = 0;
+                } else { // set some of the coins for return
+                    numCoins = numCoins - coinsNeeded; // remove the coins from numCoins
+                    numCoinsToReturn = coinsNeeded; // add the coins to coinsToBeReturned
+                }
                 return numCoinsToReturn * coinValue; // return the value of the coins to be returned
             }
             else

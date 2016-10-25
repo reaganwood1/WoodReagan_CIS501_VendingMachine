@@ -69,7 +69,7 @@ namespace VendingMachine
             int amountNeeded = amountInserted - price;
             int availableValue = 0;
 
-            for (int i = 0; i < allCoins.Length; i++) { // get the coins each coin can contribute, subract it from amountNeeded
+            for (int i = allCoins.Length - 1; i >= 0; i--) { // get the coins each coin can contribute, subract it from amountNeeded
                 availableValue = allCoins[i].GetMaxCoinsAvailabe(amountNeeded);
                 amountNeeded = amountNeeded - availableValue;
             }
