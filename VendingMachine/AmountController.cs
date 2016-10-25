@@ -54,9 +54,15 @@ namespace VendingMachine
             if (!TryGetReturnChange(0)) // queues coins for return
                 throw new InvalidOperationException("Change could not be calculate when only change was needed");
 
+            amountInserted = 0; // set the amount inserted back to 0
+            amountDisplay.DisplayAmount(0); // set the display back to 0
+
+            for (int i = 0; i < allCans.Length; i++) { // turn off all of the purchaseable lights
+                allCans[i].TurnOffPurchaseLight();
+            }
+
             for (int i = 0; i < allCoins.Length; i++) // call dispense coins for each coin
-                allCoins[i].DispenseCoins();
-           
+                allCoins[i].DispenseCoins(); 
         }
 
         /// <summary>

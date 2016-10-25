@@ -231,16 +231,17 @@ namespace VendingMachine
             txtCanDispenser.Text = "";
             amountDisplay.DisplayAmount(0);
             txtChange100Yen.Text = "";
+            txtChange50Yen.Text = "";
             txtChange10Yen.Text = "";
             txtChange500Yen.Text = "";
-            txtNum100Yen.Text = "";
-            txtNum10Yen.Text = "";
-            txtNum500Yen.Text = "";
-            txtNum50Yen.Text = "";
-            txtNumCan0.Text = "";
-            txtNumCan1.Text = "";
-            txtNumCan2.Text = "";
-            txtNumCan3.Text = "";
+            txtNum100Yen.Text = NUMCOINS[2].ToString();
+            txtNum10Yen.Text = NUMCOINS[0].ToString();
+            txtNum500Yen.Text = NUMCOINS[3].ToString();
+            txtNum50Yen.Text = NUMCOINS[1].ToString();
+            txtNumCan0.Text = NUMCANS[0].ToString();
+            txtNumCan1.Text = NUMCANS[1].ToString();
+            txtNumCan2.Text = NUMCANS[2].ToString();
+            txtNumCan3.Text = NUMCANS[3].ToString();
 
             // Instantiate Coins
             allCoins[0] = new Coin(COINVALUES[0], coinDispenser10Yen, NUMCOINS[0]);
