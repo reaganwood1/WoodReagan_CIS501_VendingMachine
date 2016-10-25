@@ -14,43 +14,91 @@ namespace VendingMachine
 
     public class CoinInserter
     {
-        // add a field to specify an object that CoinInserted() will firstvisit
+        /// <summary>
+        /// Handles the coinInserter press by controlling the coin insertion process
+        /// </summary>
+        private AmountController vmControl;
 
-        // rewrite the following constructor with a constructor that takes an object
-        // to be set to the above field
-        public CoinInserter()
+        /// <summary>
+        /// The type of coin this inserter will insert
+        /// </summary>
+        private CurrencyTypes currencyType;
+
+        /// <summary>
+        /// Controller sets the amountController that will handle coin insertion
+        /// </summary>
+        /// <param name="vm">ammount controller</param>
+        /// <param name="type">type of currency this inserter will insert</param>
+        public CoinInserter(AmountController vm, CurrencyTypes type)
         {
+            vmControl = vm;
+            currencyType = type;
         }
+
+        /// <summary>
+        /// Inserts a coin of the given type into the vending machine controller
+        /// </summary>
         public void CoinInserted()
         {
-            // You can add only one line here
+            vmControl.CoinInserted(currencyType);
         }
 
     }
 
     public class PurchaseButton
     {
-        // add a field to specify an object that ButtonPressed() will first visit
-        public PurchaseButton()
-        { 
+        /// <summary>
+        /// Handles the purchase button press by controlling the purchase process
+        /// </summary>
+        private AmountController vmControl;
+
+        /// <summary>
+        /// index specifying which item this button corresponds to on the display
+        /// </summary>
+        private int buttonIndex;
+
+        /// <summary>
+        /// Constructor places reference to AmountController to handle purchase button presses. Additionally, assigns the specific item index to this button
+        /// </summary>
+        /// <param name="vm">AmountController</param>
+        /// <param name="index">index specifying which item it corresponds to on the display</param>
+        public PurchaseButton(AmountController vm, int index)
+        {
+            vmControl = vm;
+            buttonIndex = index;
         }
+
+        /// <summary>
+        /// Calls the amountController to handle the potential purchasing of the can at this index
+        /// </summary>
         public void ButtonPressed()
         {
-            // You can add only one line here
+            vmControl.PurchaseButtonPressed(buttonIndex);
         }
     }
 
     public class CoinReturnButton
     {
-        // add a field to specify an object that Button Pressed will visit
-        // replace the following default constructor with a constructor that takes
-        // an object to be set to the above field
-        public CoinReturnButton()
+        /// <summary>
+        /// Handles the return button press by controlling the return of coins if necessary
+        /// </summary>
+        private AmountController vmControl;
+       
+        /// <summary>
+        /// Constructor sets the AmountController to handle return button presses
+        /// </summary>
+        /// <param name="vm">AmountController</param>
+        public CoinReturnButton(AmountController vm)
         {
+            vmControl = vm;
         }
+
+        /// <summary>
+        /// checks to see if change can be returned, and if so, vmControl orchestrates the return
+        /// </summary>
         public void ButtonPressed()
         {
-            // You can add only one lines here
+            vmControl.ReturnChange(); 
         }
     }
 }
