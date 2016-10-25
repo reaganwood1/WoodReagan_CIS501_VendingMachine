@@ -33,13 +33,22 @@ namespace VendingMachine
         /// </summary>
         private int price;
 
+#if DEBUG
+        public int NumCans {
+            get {
+                return numCans;
+            }
+        }
+#endif
+
         /// <summary>
         /// assigns references of dispenser, soldOutLight, and purchaseLight
         /// </summary>
-        /// <param name="can"></param>
-        /// <param name="soldOut"></param>
-        /// <param name="purchaseLight"></param>
-        public Can(CanDispenser can, Light soldOut, Light purchaseLight, int price) {
+        /// <param name="can">dispenser for the can</param>
+        /// <param name="soldOut">sold out light for the can</param>
+        /// <param name="purchaseLight">purchase light for the can</param>
+        /// /// <param name="initialAmount">initial amount of the cans</param>
+        public Can(CanDispenser can, Light soldOut, Light purchaseLight, int price, int initialAmount) {
 
             if (can == null || soldOut == null || purchaseLight == null)
                 throw new InvalidOperationException("setting a reference to null in can");
@@ -48,6 +57,7 @@ namespace VendingMachine
             dispenser = can;
             soldOutLight = soldOut;
             this.purchaseLight = purchaseLight;
+            numCans = initialAmount;
         }
 
         /// <summary>

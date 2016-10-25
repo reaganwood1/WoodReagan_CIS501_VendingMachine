@@ -25,8 +25,8 @@ namespace VendingMachine
 
         public static readonly int[] COINVALUES = { 10, 50, 100, 500 };
         public static readonly int[] NUMCOINS = { 15, 10, 5, 2 };
-            // 10Yen, 50Yen, 100Yen, 500Yen
-      
+        // 10Yen, 50Yen, 100Yen, 500Yen
+
         // Boundary Objects
         private AmountDisplay amountDisplay;
         private DebugDisplay displayPrice0, displayPrice1, displayPrice2, displayPrice3;
@@ -42,9 +42,12 @@ namespace VendingMachine
         private PurchaseButton purchaseButton0, purchaseButton1, purchaseButton2, purchaseButton3;
         private CoinReturnButton coinReturnButton;
 
-        // Declare fields for your entity and control objects
+        // instantiate Can array
+        private Can[] allCans = new Can[NUMCANS.Length];
+        private Coin[] allCoins = new Coin[NUMCOINS.Length];
 
-
+        // instantiate controller
+        AmountController amountControl;
 
         public VendingMachine()
         {
@@ -95,22 +98,20 @@ namespace VendingMachine
             canDispenser2 = new CanDispenser(txtCanDispenser, CANNAMES[2]);
             canDispenser3 = new CanDispenser(txtCanDispenser, CANNAMES[3]);
 
-            // Instantiate Coin array
-            Coin[] allCoins = new Coin[NUMCOINS.Length];
-            allCoins[0] = new Coin(NUMCOINS[0], coinDispenser10Yen);
-            allCoins[1] = new Coin(NUMCOINS[1], coinDispenser50Yen);
-            allCoins[2] = new Coin(NUMCOINS[2], coinDispenser100Yen);
-            allCoins[3] = new Coin(NUMCOINS[3], coinDispenser500Yen);
+            // Instantiate Coins
+            allCoins[0] = new Coin(COINVALUES[0], coinDispenser10Yen, NUMCOINS[0]);
+            allCoins[1] = new Coin(COINVALUES[1], coinDispenser50Yen, NUMCOINS[1]);
+            allCoins[2] = new Coin(COINVALUES[2], coinDispenser100Yen, NUMCOINS[2]);
+            allCoins[3] = new Coin(COINVALUES[3], coinDispenser500Yen, NUMCOINS[3]);
 
-            // instantiate Can array
-            Can[] allCans = new Can[NUMCANS.Length];
-            allCans[0] = new Can(canDispenser0, soldOutLight0, purchasableLight0, CANPRICES[0]);
-            allCans[1] = new Can(canDispenser1, soldOutLight1, purchasableLight1, CANPRICES[1]);
-            allCans[2] = new Can(canDispenser2, soldOutLight2, purchasableLight2, CANPRICES[2]);
-            allCans[3] = new Can(canDispenser3, soldOutLight3, purchasableLight3, CANPRICES[3]);
+            // Instantiate Cans
+            allCans[0] = new Can(canDispenser0, soldOutLight0, purchasableLight0, CANPRICES[0], NUMCANS[0]);
+            allCans[1] = new Can(canDispenser1, soldOutLight1, purchasableLight1, CANPRICES[1], NUMCANS[1]);
+            allCans[2] = new Can(canDispenser2, soldOutLight2, purchasableLight2, CANPRICES[2], NUMCANS[2]);
+            allCans[3] = new Can(canDispenser3, soldOutLight3, purchasableLight3, CANPRICES[3], NUMCANS[3]);
 
             // Instantiate control class
-            AmountController amountControl = new AmountController(allCoins, allCans, noChangeLight, amountDisplay);
+            amountControl = new AmountController(allCoins, allCans, noChangeLight, amountDisplay);
 
             // You must replace the following default constructors with 
             // constructors with arguments (non-default constructors)
@@ -218,7 +219,44 @@ namespace VendingMachine
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            // Write the body to reset the field values of entity objects
+            purchasableLight0.TurnOff();
+            purchasableLight1.TurnOff();
+            purchasableLight2.TurnOff();
+            purchasableLight3.TurnOff();
+            noChangeLight.TurnOff();
+            soldOutLight0.TurnOff();
+            soldOutLight1.TurnOff();
+            soldOutLight2.TurnOff();
+            soldOutLight3.TurnOff();
+            txtCanDispenser.Text = "";
+            amountDisplay.DisplayAmount(0);
+            txtChange100Yen.Text = "";
+            txtChange10Yen.Text = "";
+            txtChange500Yen.Text = "";
+            txtNum100Yen.Text = "";
+            txtNum10Yen.Text = "";
+            txtNum500Yen.Text = "";
+            txtNum50Yen.Text = "";
+            txtNumCan0.Text = "";
+            txtNumCan1.Text = "";
+            txtNumCan2.Text = "";
+            txtNumCan3.Text = "";
+
+            // Instantiate Coins
+            allCoins[0] = new Coin(COINVALUES[0], coinDispenser10Yen, NUMCOINS[0]);
+            allCoins[1] = new Coin(COINVALUES[1], coinDispenser50Yen, NUMCOINS[1]);
+            allCoins[2] = new Coin(COINVALUES[2], coinDispenser100Yen, NUMCOINS[2]);
+            allCoins[3] = new Coin(COINVALUES[3], coinDispenser500Yen, NUMCOINS[3]);
+
+            // Instantiate Cans
+            allCans[0] = new Can(canDispenser0, soldOutLight0, purchasableLight0, CANPRICES[0], NUMCANS[0]);
+            allCans[1] = new Can(canDispenser1, soldOutLight1, purchasableLight1, CANPRICES[1], NUMCANS[1]);
+            allCans[2] = new Can(canDispenser2, soldOutLight2, purchasableLight2, CANPRICES[2], NUMCANS[2]);
+            allCans[3] = new Can(canDispenser3, soldOutLight3, purchasableLight3, CANPRICES[3], NUMCANS[3]);
+
+            // Instantiate control class
+            amountControl = new AmountController(allCoins, allCans, noChangeLight, amountDisplay);
+
         }
 
         private void displayCanPricesAndNames()
@@ -235,17 +273,16 @@ namespace VendingMachine
 
         private void updateDebugDisplays()
         {
-            // You need to change XXX to appropriate "object.property"
-            /* 
-            displayNum10Yen.Display(XXX);
-            displayNum50Yen.Display(XXX);
-            displayNum100Yen.Display(XXX);
-            displayNum500Yen.Display(XXX);
-            displayNumCans0.Display(XXX);
-            displayNumCans1.Display(XXX);
-            displayNumCans2.Display(XXX);
-            displayNumCans3.Display(XXX);
-             * */
+#if DEBUG
+            displayNum10Yen.Display(allCoins[0].NumCoins);
+            displayNum50Yen.Display(allCoins[1].NumCoins);
+            displayNum100Yen.Display(allCoins[2].NumCoins);
+            displayNum500Yen.Display(allCoins[3].NumCoins);
+            displayNumCans0.Display(allCans[0].NumCans);
+            displayNumCans1.Display(allCans[0].NumCans);
+            displayNumCans2.Display(allCans[0].NumCans);
+            displayNumCans3.Display(allCans[0].NumCans);
+#endif
         }
 
     

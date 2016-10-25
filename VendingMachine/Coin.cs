@@ -38,17 +38,6 @@ namespace VendingMachine
                 return numCoins;
             }
         }
-
-        /// <summary>
-        /// Public getter for coinValue
-        /// </summary>
-        public int CoinValue
-        {
-            get
-            {
-                return coinValue;
-            }
-        }
 #endif
 
         /// <summary>
@@ -56,14 +45,15 @@ namespace VendingMachine
         /// </summary>
         /// <param name="value">value of the coin to be created</param>
         /// <param name="dispenser">dispenser reference necessary to dispense coins</param>
-        public Coin(int value, CoinDispenser dispenser) {
+        /// <param name="initialAmount">Initial number of coins of this type</param>
+        public Coin(int value, CoinDispenser dispenser, int initialAmount) {
             coinValue = value;
 
             if (dispenser == null) // guard for null dispenser
                 throw new InvalidOperationException("Dispenser was null");
 
             this.dispenser = dispenser;
-                
+            numCoins = initialAmount;
         }
 
         /// <summary>
