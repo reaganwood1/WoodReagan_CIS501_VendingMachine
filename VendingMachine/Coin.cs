@@ -38,6 +38,21 @@ namespace VendingMachine
         }
 
         /// <summary>
+        /// gets numCoinsToReturn and sets numCoinsToReturn. These coins will be taken from 
+        /// numCoins. If numCoins or NumCoinsToReturn is negative, exception will be thrown.
+        /// </summary>
+        public int NumCoinsToReturn {
+            get {
+                return numCoinsToReturn;
+            }
+            set {
+                numCoinsToReturn = numCoinsToReturn + value;
+                numCoins = numCoins - value;
+                if (numCoins < 0 || numCoinsToReturn < 0)
+                    throw new InvalidOperationException("coins went below zero, invalid operation");
+            }
+        }
+        /// <summary>
         /// Public getter for coinValue
         /// </summary>
         public int CoinValue {
@@ -73,7 +88,7 @@ namespace VendingMachine
         public void DispenseCoins() {
 
             dispenser.Actuate(numCoinsToReturn);
-            numCoins = numCoins - numCoinsToReturn;
+            //numCoins = numCoins - numCoinsToReturn;
             numCoinsToReturn = 0;
 
 
