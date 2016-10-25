@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,10 +59,11 @@ namespace VendingMachine
         public Coin(int value, CoinDispenser dispenser) {
             coinValue = value;
 
-            if (dispenser != null)
-                this.dispenser = dispenser;
-            else
+            if (dispenser == null) // guard for null dispenser
                 throw new InvalidOperationException("Dispenser was null");
+
+            this.dispenser = dispenser;
+                
         }
 
         /// <summary>
