@@ -80,7 +80,7 @@ namespace VendingMachine
         /// <returns></returns>
         public int GetMaxCoinsAvailabe(int amountNeeded) {
 
-            if (numCoins > 0 && coinValue > 0) // checks for divide by zero
+            if (numCoins >= 0 && coinValue > 0) // checks for divide by zero
             {
                 int coinsNeeded = amountNeeded / (coinValue); // integer division will produce highest number of coin that can be returned without going over
                 if (coinsNeeded > numCoins) { // set all of the coins for return

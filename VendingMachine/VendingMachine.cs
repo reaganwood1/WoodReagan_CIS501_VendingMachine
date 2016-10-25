@@ -279,9 +279,9 @@ namespace VendingMachine
             displayNum100Yen.Display(allCoins[2].NumCoins);
             displayNum500Yen.Display(allCoins[3].NumCoins);
             displayNumCans0.Display(allCans[0].NumCans);
-            displayNumCans1.Display(allCans[0].NumCans);
-            displayNumCans2.Display(allCans[0].NumCans);
-            displayNumCans3.Display(allCans[0].NumCans);
+            displayNumCans1.Display(allCans[1].NumCans);
+            displayNumCans2.Display(allCans[2].NumCans);
+            displayNumCans3.Display(allCans[3].NumCans);
 #endif
         }
 
