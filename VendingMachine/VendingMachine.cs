@@ -84,8 +84,8 @@ namespace VendingMachine
             purchasableLight2 = new Light(pbxPurLight2, Color.Aqua);
             purchasableLight3 = new Light(pbxPurLight3, Color.Aqua);
 
-            coinDispenser10Yen = new CoinDispenser();
-            coinDispenser50Yen = new CoinDispenser();
+            coinDispenser10Yen = new CoinDispenser(txtChange10Yen);
+            coinDispenser50Yen = new CoinDispenser(txtChange50Yen);
             coinDispenser100Yen = new CoinDispenser(txtChange100Yen);
             coinDispenser500Yen = new CoinDispenser(txtChange500Yen);
 
@@ -95,30 +95,41 @@ namespace VendingMachine
             canDispenser2 = new CanDispenser(txtCanDispenser, CANNAMES[2]);
             canDispenser3 = new CanDispenser(txtCanDispenser, CANNAMES[3]);
 
+            // Instantiate Coin array
+            Coin[] allCoins = new Coin[NUMCOINS.Length];
+            allCoins[0] = new Coin(NUMCOINS[0], coinDispenser10Yen);
+            allCoins[1] = new Coin(NUMCOINS[1], coinDispenser50Yen);
+            allCoins[2] = new Coin(NUMCOINS[2], coinDispenser100Yen);
+            allCoins[3] = new Coin(NUMCOINS[3], coinDispenser500Yen);
+
+            // instantiate Can array
+            Can[] allCans = new Can[NUMCANS.Length];
+            allCans[0] = new Can(canDispenser0, soldOutLight0, purchasableLight0, CANPRICES[0]);
+            allCans[1] = new Can(canDispenser1, soldOutLight1, purchasableLight1, CANPRICES[1]);
+            allCans[2] = new Can(canDispenser2, soldOutLight2, purchasableLight2, CANPRICES[2]);
+            allCans[3] = new Can(canDispenser3, soldOutLight3, purchasableLight3, CANPRICES[3]);
+
+            // Instantiate control class
+            AmountController amountControl = new AmountController(allCoins, allCans, noChangeLight, amountDisplay);
+
             // You must replace the following default constructors with 
             // constructors with arguments (non-default constructors)
             // to pass (set) the first object that ButtonPressed() will
             // visit
-            purchaseButton0 = new PurchaseButton();
-            purchaseButton1 = new PurchaseButton();
-            purchaseButton2 = new PurchaseButton();
-            purchaseButton3 = new PurchaseButton();
-
+            purchaseButton0 = new PurchaseButton(amountControl, 0);
+            purchaseButton1 = new PurchaseButton(amountControl, 1);
+            purchaseButton2 = new PurchaseButton(amountControl, 2);
+            purchaseButton3 = new PurchaseButton(amountControl, 3);
+           
             // You must replace the following default constructors with
             // constructors that take armuments to pass the first object that
             // the CoinInserted() will call
-            coinInserter10Yen = new CoinInserter();
-            coinInserter50Yen = new CoinInserter();
-            coinInserter100Yen = new CoinInserter();
-            coinInserter500Yen = new CoinInserter();
+            coinInserter10Yen = new CoinInserter(amountControl, CurrencyTypes.TenYen);
+            coinInserter50Yen = new CoinInserter(amountControl, CurrencyTypes.FiftyYen);
+            coinInserter100Yen = new CoinInserter(amountControl, CurrencyTypes.OneHundredYen);
+            coinInserter500Yen = new CoinInserter(amountControl, CurrencyTypes.FiveHundredYen);
 
-            coinReturnButton = new CoinReturnButton();
-
-            // Instantiate entity classes
-            Coin coin10Yen = new Coin(10,)
-
-            // Instantiate control class
-            AmountController amountControl = new AmountController()
+            coinReturnButton = new CoinReturnButton(amountControl);
 
             // Display debug information
             displayCanPricesAndNames();
