@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Created by Reagan Wood
+// CIS 501
+// 10/25/2016
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +15,9 @@ namespace VendingMachine
     /// </summary>
     public enum CurrencyTypes { TenYen, FiftyYen, OneHundredYen, FiveHundredYen };
 
+    /// <summary>
+    /// Controls the amount of Coins and Cans and their associated properties
+    /// </summary>
     public class AmountController
     {
         /// <summary>

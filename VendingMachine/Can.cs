@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Created by Reagan Wood
+// CIS 501
+// 10/25/2016
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
+    /// <summary>
+    /// Entity object representing a can. Contains amount of cans, price of can, and methods that can be used
+    /// to change the inventory and references associated with the can
+    /// </summary>
     public class Can
     {
         /// <summary>

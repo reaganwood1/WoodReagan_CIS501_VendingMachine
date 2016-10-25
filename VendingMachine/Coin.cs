@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Created by Reagan Wood
+// CIS 501
+// 10/25/2016
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +11,9 @@ using System.Threading.Tasks;
 namespace VendingMachine
 {
 
+    /// <summary>
+    /// Entity object representing a coin. Holds coins and has a value, operations can be done involving inventory of coins
+    /// </summary>
     public class Coin
     {
         /// <summary>
